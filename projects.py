@@ -95,7 +95,7 @@ def print_games(games):
             f"{g.age_rating:<10}{g.price:<8}{g.player_rating:<10.1f}{g.status:<10}{g.copies:<8}"
         )
         
-# . подсчитать общее количество копий всех игр
+# 1. подсчитать общее количество копий всех игр
 def calculate_total_copies(games):
     total_copies = 0
     for game in games:
@@ -132,6 +132,24 @@ def has_hits(games):
             return True
     return False
 
+
+def save_games_to_txt(games, filename):
+    file_out = open(filename, "w", encoding="utf-8")
+
+    file_out.write(
+        f"{'ID':<6}{'Название':<20}{'Жанр':<12}{'Платформа':<12}"
+        f"{'Возраст':<10}{'Цена':<8}{'Рейтинг':<10}{'Статус':<10}{'Копии':<8}\n"
+    )
+
+    for g in games:
+        file_out.write(
+            f"{g.id:<6}{g.name:<20}{g.genre:<12}{g.platform:<12}"
+            f"{g.age_rating:<10}{g.price:<8}{g.player_rating:<10.1f}{g.status:<10}{g.copies:<8}\n"
+        )
+
+    file_out.close()
+
+
 def add_game_to_list(games, game):
     global GLOBAL_VIDEO_GAME_ID
     GLOBAL_VIDEO_GAME_ID += 1
@@ -150,3 +168,5 @@ add_game_to_list(
     )
 
 print_games(games)
+save_games_to_txt(games, "projects.txt")
+
