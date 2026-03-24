@@ -4,12 +4,7 @@ from session import Session
 
 
 def read_int(prompt: str) -> int:
-    while True:
-        value = input(prompt).strip()
-        try:
-            return int(value)
-        except ValueError:
-            print("Ошибка ввода. Введите целое число.")
+    return int(input(prompt).strip())
 
 
 def create_demo_cinema() -> Cinema:
@@ -67,4 +62,5 @@ def main() -> None:
 
         else:
             print("Неверный пункт. Выберите число от 1 до 5.")
+
 
