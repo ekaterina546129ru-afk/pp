@@ -34,7 +34,7 @@ def schedule(message: telebot.types.Message):
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message: telebot.types.Message):
-    input_text = message.text.lower()
+    input_text = (message.text or "").lower()
     output_text = ""
 
     if input_text == sklad.BUTTON_MONDAY_TEXT.lower():
